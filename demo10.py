@@ -30,16 +30,17 @@ cv2.namedWindow(myWindow)
 cv2.setMouseCallback(myWindow, drawCircle)
 FONT_PATH='fonts/NotoSerifCJKtc-Regular.otf'
 font=ImageFont.truetype(FONT_PATH, 36)
-img_pil=Image.fromarray(orginalImage)
-draw=ImageDraw.Draw(img_pil)
+
 
 k = 0  ##keyboard 事件
 while k != 27:
     cv2.imshow(myWindow, orginalImage)
+    img_pil = Image.fromarray(orginalImage)
+    draw = ImageDraw.Draw(img_pil)
     draw.text((10,60),"我是中文.ㄅㄆㄇㄈ①②③④⑤⑥.",font=font, fill=(250,255,255,255))
     orginalImage=np.array(img_pil)
-    cv2.putText(orginalImage, "left click, and drag", (50, 50),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+    # cv2.putText(orginalImage, "left click, and drag", (50, 50),
+    #             cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
     k = cv2.waitKey(20)
     if k==ord('c'):
         orginalImage=image_copy.copy()
